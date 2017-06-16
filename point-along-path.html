@@ -9,21 +9,21 @@
 	<meta property="og:title" content="a point moves along a tringle path">
 	<meta property="og:description" content="a point moves along a tringle path">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-	<script type="text/javascript" src="./paper.js"></script>
+	<script type="text/javascript" src="//hknudesign.kr/js/paper.js"></script>
 
-	<!--여기가 paper.js 스크립트 -->
-	<script type="text/paperscript" canvas="myCanvas">
-	// vars
+<!--여기가 paper.js 스크립트 -->
+<script type="text/paperscript" canvas="myCanvas">
+// vars
 	var r1 = [100, 100];
 	var r2 = [200, 100];
 	var r3 = [200, 200];
 	var r4 = [100, 200];
 
 // draw the line
-	var path = new Path();
-	path.add(new Point(r1), new Point(r2), new Point(r3), new Point(r4));
-	path.strokeColor = "blue";
-	path.closed = true;
+	var path-rectangle = new Path();
+	path-rectangle.add(new Point(r1), new Point(r2), new Point(r3), new Point(r4));
+	path-rectangle.strokeColor = "blue";
+	path-rectangle.closed = true;
 
 // draw the circle
 	var circle = new Path.Circle(0,100,4);
