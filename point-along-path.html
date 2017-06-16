@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Point Along Path</title>
+	<meta name="description" content="a point moves along a tringle path">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://leebh.net/lab/tilt/index.html">
+	<meta property="og:title" content="a point moves along a tringle path">
+	<meta property="og:description" content="a point moves along a tringle path">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+	<script type="text/javascript" src="http://hknudesign.kr/js/paper.js"></script>
+
+	<!--여기가 paper.js 스크립트 -->
+	<script type="text/paperscript" canvas="myCanvas">
+	// vars
+	var r1 = [100, 100];
+	var r2 = [200, 100];
+	var r3 = [200, 200];
+	var r4 = [100, 200];
+
+// draw the line
+	var path = new Path();
+	path.add(new Point(r1), new Point(r2), new Point(r3), new Point(r4));
+	path.strokeColor = "blue";
+	path.closed = true;
+
+// draw the circle
+	var circle = new Path.Circle(0,100,4);
+	circle.fillColor = "red";
+
+// target to move to
+var target = r2;
+
+// how many frame does it take to reach a target
+var steps = 40;
+
+// defined vars for onFrame
+var dX       = 0;
+var dY       = 0;
+
+// position circle on path
+circle.position.x = target[0];
+circle.position.y = target[1];
+
+function onFrame(event) {
+
+    //check if cricle reached its target
+    if (Math.round(circle.position.x) == target[0] && Math.round(circle.position.y) == target[1]) {
+        switch(target) {
+            case r1:
+                target = r2;
+                break;
+            case r2:
+                target = r3;
+                break;
+            case r3:
+                target = r4;
+                break;
+            case r4:
+                target = r1;
+                break;
+        }
+
+        // calculate the dX and dY
+        dX = (target[0] - circle.position.x)/steps;
+        dY = (target[1] - circle.position.y)/steps;
+
+    }
+
+    // do the movement
+    circle.position.x += dX;
+    circle.position.y += dY;
+}
+	</script>
+</head>
+<body style="margin:0;padding:0">
+	<canvas id="myCanvas" width="600" height="600" resize></canvas>
+</body>
